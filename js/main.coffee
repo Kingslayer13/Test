@@ -1,9 +1,7 @@
 do =>
   limited = (time, func) ->
-
     isCalled = no
     func = time and time = 20 if time?()
-
     ->
       @args = arguments
       if not isCalled
