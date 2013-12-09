@@ -1,19 +1,11 @@
-do ->
-  count = 0;
-  window.mPlus = (x) ->
-    count += x
-    count
-  window.mMinus = (x) ->
-    count -= x
-    count
-  this
+do =>
+  createConfigurator = ->
+    obj = {}
+    createArguments = (x, y)->
+      createArguments.result = obj
+      obj[x] = y
+      arguments.callee
 
-console.log mPlus 0
-console.log mPlus 2
-console.log mPlus 10
-console.log mPlus 3
+  _ = createConfigurator()
+  console.log _("age", 25)("name", "sergii").result
 
-console.log mMinus 5
-console.log mPlus 3
-console.log mMinus 2
-console.log mPlus 9
