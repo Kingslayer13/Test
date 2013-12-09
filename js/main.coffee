@@ -1,10 +1,12 @@
-do =>
+do ->
   createConfigurator = ->
-    obj = {}
-    createArguments = (x, y)->
-      createArguments.result = obj
-      obj[x] = y
-      arguments.callee
+    configurator = (fieldName, value) ->
+      obj[fieldName] = value
+      return configurator
+      
+    configurator.result = obj = {}
+    
+    return configurator
 
   _ = createConfigurator()
   console.log _("age", 25)("name", "sergii").result
